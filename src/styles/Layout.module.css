@@ -14,13 +14,14 @@
 }
 
 .left {
-  background: url('../../public/jeffrey-d-serkes.jpeg') no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background: url('../../public/jeffrey-d-serkes.jpeg');
+  background-size: contain;
+  min-height: 100vh;
   width: calc(100vw / 4);
 }
 
 .right {
-  min-width: calc(100vw / 4 * 3);
+  min-width: calc(100vw / 4 * 3 - 2rem);
+  padding: 0 2.5rem;
   text-align: center;
 }

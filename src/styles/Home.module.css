@@ -1,38 +1,12 @@
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
-}
-
-.description a {
+.main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-}
-
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
+  grid-template-columns: repeat(3, minmax(25%, auto));
+  gap: 2rem;
   width: var(--max-width);
   max-width: 100%;
 }
@@ -41,7 +15,8 @@
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0.1);
+  box-shadow: rgba(225, 235, 245, 0.24) 0px 3px 8px;
   transition: background 200ms, border 200ms;
 }
 
@@ -51,16 +26,15 @@
 }
 
 .card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .card p {
-  margin: 0;
+  margin: 0 0 0.75rem;
   opacity: 0.6;
-  font-size: 0.9rem;
   line-height: 1.5;
-  max-width: 30ch;
+  text-align: center;
 }
 
 .center {
@@ -143,12 +117,8 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
+    background: rgba(var(--card-rgb), 0.75);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
   }
 }
 
@@ -180,7 +150,7 @@
   }
 
   .card h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .center {
