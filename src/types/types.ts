@@ -3,4 +3,5 @@ export interface Jeffism {
   definition: string;
   definition2: string;
   source: string;
+  id: string;
 }
