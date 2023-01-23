@@ -1,29 +1,21 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import Layout from '@/components/layout'
-import { parse } from 'csv-parse'
+import { parse } from 'csv-parse/sync'
 import fs from 'fs'
 import { Jeffism } from '@/types/types'
+import { JeffismCard } from '@/components/JeffismCard/JeffismCard'
 
 
 
-export async function getStaticProps() {
-  // let jeffisms: Jeffism[] = []
+export function getStaticProps() {
   const data = fs.readFileSync('src/jeffisms.csv', 'utf-8')
-  const jeffisms = parse(data, { trim: true, columns: false }, (err, rows: string[][]) => {
-    if (err) throw err;
-
-    return rows.slice(1).map(row => {
-      const [saying, definition, definition2, source] = row;
-      return {
-        saying,
-        definition,
-        definition2,
-        source
-      }
-    })
+  const parsedData = parse(data, { trim: true, columns: false });
+  const jeffisms = parsedData.slice(1).map((data: string[]) => {
+    const [saying, source, definition, definition2] = data;
+    return { saying, source, definition, definition2 };
   })
-
+  console.log({ jeffisms })
   return {
     props: {
       jeffisms
@@ -46,14 +38,7 @@ export default function Home({ jeffisms }: Props) {
       </Head>
       <main className={styles.main}>
         <div className={styles.grid}>
-          {jeffisms.map(jeffism => (
-            <div className={styles.card}>
-              <h2>"{jeffism.saying}"</h2>
-              <p> - {jeffism.source}</p>
-              <span><b>Definition:</b> {jeffism.definition}</span>
-              {jeffism.definition2 && <span><b>Alt Definition:</b> {jeffism.definition2}</span>}
-            </div>
-          ))}
+          {jeffisms.map(jeffism => <JeffismCard key={jeffism.saying} jeffism={jeffism} />)}
         </div>
       </main>
     </Layout>
